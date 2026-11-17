@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Typing Test | TypeMaster</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/typing.css">
+</head>
+
+<body>
+
+<header class="header">
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            Type<span>Master</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="practice.html">Typing Test</a></li>
+            <li><a href="lessons.html">Practice</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="register.html" class="signup-btn">Sign Up</a>
+        </div>
+    </nav>
+</header>
+
+<main class="typing-page">
+
+    <section class="typing-heading">
+        <span>IMPROVE YOUR SKILLS</span>
+        <h1>Typing Speed Test</h1>
+        <p>Practice daily. Improve your speed. Become a typing expert.</p>
+    </section>
+
+    <section class="typing-container">
+
+        <!-- Typing Mode Selection -->
+        <div class="typing-mode-options">
+
+            <button class="mode-btn active" data-mode="classic">
+                Classic Mode
+            </button>
+
+            <button class="mode-btn" data-mode="highlight">
+                Live Highlight
+            </button>
+
+        </div>
+
+        <!-- Difficulty Selection -->
+        <div class="difficulty-options">
+            <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+            <button class="difficulty-btn" data-difficulty="normal">Normal</button>
+            <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+            <button class="difficulty-btn" data-difficulty="fullHard">Full Hard</button>
+        </div>
+
+        <!-- Paragraph Navigation -->
+        <div class="paragraph-navigation">
+            <button id="previousBtn">← Previous</button>
+            <button id="nextBtn">Next →</button>
+        </div>
+
+        <!-- Timer Selection -->
+        <div class="test-toolbar">
+
+            <div class="duration-options">
+                <button class="duration active" data-time="30">30 sec</button>
+                <button class="duration" data-time="60">60 sec</button>
+                <button class="duration" data-time="120">2 min</button>
+                <button class="duration" data-time="300">5 min</button>
+            </div>
+
+            <button id="restartBtn" class="restart-btn">
+                ↻ Restart
+            </button>
+
+        </div>
+
+        <!-- Typing Statistics -->
+        <div class="typing-stats">
+
+            <div class="stat-box">
+                <span>WPM</span>
+                <h2 id="wpm">0</h2>
+            </div>
+
+            <div class="stat-box">
+                <span>Accuracy</span>
+                <h2 id="accuracy">100%</h2>
+            </div>
+
+            <div class="stat-box">
+                <span>Time Left</span>
+                <h2 id="timer">30</h2>
+            </div>
+
+            <div class="stat-box">
+                <span>Errors</span>
+                <h2 id="errors">0</h2>
+            </div>
+
+        </div>
+
+        <!-- Paragraph / Live Highlight Typing Area -->
+        <div class="passage-box">
+            <div id="passage">Loading paragraph...</div>
+        </div>
+
+        <!-- Classic Mode Typing Area -->
+        <textarea
+            id="typingInput"
+            placeholder="Start typing here..."
+            spellcheck="false"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+        ></textarea>
+
+        <!-- Typing Actions -->
+        <div class="typing-actions">
+            <p>Keep your fingers on the home row keys.</p>
+
+            <button id="startBtn" class="start-btn">
+                Start Typing
+            </button>
+        </div>
+
+        <!-- Result -->
+        <div id="result" class="result-box" hidden>
+
+            <h2>Test Completed!</h2>
+            <p>Your typing performance</p>
+
+            <h3 id="finalWpm">0 WPM</h3>
+            <p id="finalAccuracy">Accuracy: 0%</p>
+
+            <button id="tryAgainBtn">Try Again</button>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+            <a href="../index.html" class="logo">
+                Type<span>Master</span>
+            </a>
+
+            <p>Practice smarter. Type faster. Achieve more.</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="feedback.html">Feedback</a>
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 TypeMaster. All rights reserved.
+    </p>
+
+</footer>
+
+<!-- Paragraphs must load before typing engine -->
+<script src="../js/paragraphs.js"></script>
+<script src="../js/typing-engine.js"></script>
+
+</body>
+</html>

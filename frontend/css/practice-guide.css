@@ -1,0 +1,1471 @@
+
+/* =====================================================
+   TYPEMASTER - PRACTICE & LEARNING PAGE
+   Separate stylesheet - Does not modify existing CSS
+===================================================== */
+
+.learning-page {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Shared section layout */
+
+.guide-section {
+    width: min(1160px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 85px 0;
+}
+
+.alternate-section {
+    width: 100%;
+    max-width: none;
+    padding: 85px max(24px, calc((100% - 1160px) / 2));
+    background: rgba(19, 31, 53, 0.42);
+}
+
+.section-heading {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.section-tag {
+    display: inline-block;
+    color: var(--accent-light);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.section-heading h2,
+.learning-cta h2 {
+    color: var(--text-primary);
+    font-size: clamp(27px, 4vw, 38px);
+    line-height: 1.25;
+    letter-spacing: -1.2px;
+    margin-bottom: 15px;
+}
+
+.section-heading p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* =====================================================
+   1. HERO
+===================================================== */
+
+.learning-hero {
+    width: min(1160px, calc(100% - 48px));
+    min-height: 540px;
+    margin: auto;
+    padding: 85px 0;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.learning-hero-content h1 {
+    max-width: 620px;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.15;
+    letter-spacing: -2.5px;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+.learning-hero-content h1 span {
+    display: block;
+    color: var(--accent-light);
+}
+
+.learning-hero-content > p {
+    max-width: 520px;
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.learning-hero-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.guide-primary-btn,
+.guide-secondary-btn {
+    min-height: 48px;
+    padding: 0 24px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.25s ease;
+}
+
+.guide-primary-btn {
+    background: var(--accent-gradient);
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(120, 108, 255, 0.22);
+}
+
+.guide-primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(120, 108, 255, 0.35);
+}
+
+.guide-secondary-btn {
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
+    background: rgba(255,255,255,0.025);
+}
+
+.guide-secondary-btn:hover {
+    border-color: var(--accent);
+    background: rgba(120,108,255,0.1);
+}
+
+.learning-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 42px;
+}
+
+.learning-highlights div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.learning-highlights strong {
+    color: var(--accent-light);
+    font-size: 20px;
+}
+
+.learning-highlights span {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+/* Hero keyboard */
+
+.learning-hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-keyboard-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 35px 25px;
+    background: linear-gradient(145deg, #172541, #10182a);
+    border: 1px solid var(--border-strong);
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
+    transform: rotate(-2deg);
+}
+
+.keyboard-label {
+    display: block;
+    color: var(--accent-light);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.mini-keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mini-keyboard div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 5px;
+    color: #fff;
+    font-size: clamp(9px, 1.5vw, 13px);
+    font-weight: 700;
+}
+
+.mini-keyboard div:not(.space-key) {
+    word-spacing: 4px;
+}
+
+.mini-keyboard div:not(.space-key) {
+    background: rgba(120,108,255,0.13);
+    padding: 15px 4px;
+    border-radius: 8px;
+    border: 1px solid rgba(164,156,255,0.15);
+}
+
+.mini-keyboard .space-key {
+    width: 65%;
+    align-self: center;
+    justify-content: center;
+    padding: 12px;
+    background: rgba(168,85,247,0.2);
+    border: 1px solid rgba(168,85,247,0.3);
+    border-radius: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.keyboard-visual-caption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 28px;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #22c55e;
+}
+
+/* =====================================================
+   2. GUIDE CARDS
+===================================================== */
+
+.guide-card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.guide-card {
+    padding: 26px 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(164,156,255,0.5);
+}
+
+.guide-card-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    background: rgba(120,108,255,0.13);
+    border-radius: 12px;
+    font-size: 23px;
+    margin-bottom: 22px;
+}
+
+.guide-card h3 {
+    color: var(--text-primary);
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.guide-card p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* =====================================================
+   3. FINGER PLACEMENT
+===================================================== */
+
+.finger-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.keyboard-diagram,
+.finger-explanation {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+}
+
+.keyboard-diagram h3,
+.finger-explanation h3 {
+    color: var(--text-primary);
+    font-size: 19px;
+    margin-bottom: 22px;
+}
+
+.finger-legend {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 22px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.finger-left {
+    color: #60a5fa;
+}
+
+.finger-right {
+    color: #c084fc;
+}
+
+.key-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 9px;
+}
+
+.key-row span {
+    flex: 1;
+    min-width: 0;
+    min-height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    color: white;
+    font-size: clamp(9px, 1.4vw, 14px);
+    font-weight: 800;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.left-pinky { background: #2563eb; }
+.left-ring { background: #0891b2; }
+.left-middle { background: #059669; }
+.left-index { background: #65a30d; }
+.right-index { background: #ca8a04; }
+.right-middle { background: #ea580c; }
+.right-ring { background: #db2777; }
+.right-pinky { background: #9333ea; }
+
+.space-row {
+    margin-top: 15px;
+}
+
+.space-row span {
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 9px;
+    border: none;
+}
+
+.space-row .space-key {
+    flex: 3;
+    background: rgba(120,108,255,0.2);
+    border: 1px solid var(--accent);
+    color: var(--accent-light);
+}
+
+.finger-explanation > p {
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.finger-explanation ul {
+    padding-left: 19px;
+}
+
+.finger-explanation li {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.finger-explanation li strong {
+    color: var(--accent-light);
+}
+
+/* Tips */
+
+.guide-tip {
+    padding: 17px 19px;
+    margin-top: 22px;
+    background: rgba(120,108,255,0.09);
+    border-left: 3px solid var(--accent);
+    border-radius: 7px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.guide-tip strong {
+    color: var(--accent-light);
+}
+
+/* =====================================================
+   4. HOME ROW
+===================================================== */
+
+.home-row-card,
+.exercise-box,
+.weak-key-card {
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.home-row-keys {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.home-row-keys span,
+.weak-keys span {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #243754;
+    border: 1px solid var(--border-strong);
+    color: white;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.home-row-keys .home-highlight {
+    background: var(--accent-gradient);
+    box-shadow: 0 5px 20px rgba(120,108,255,0.25);
+}
+
+.home-row-card h3 {
+    color: var(--accent-light);
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.home-row-card > p,
+.weak-key-card > p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.exercise-box {
+    margin-top: 22px;
+    text-align: left;
+}
+
+.exercise-box h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.exercise-box > p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.exercise-text {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.exercise-text code {
+    padding: 13px 18px;
+    background: rgba(120,108,255,0.12);
+    border: 1px solid rgba(120,108,255,0.22);
+    border-radius: 8px;
+    color: var(--accent-light);
+    font-size: 15px;
+}
+
+/* =====================================================
+   5. TOUCH TYPING
+===================================================== */
+
+.touch-typing-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 25px;
+}
+
+.touch-typing-visual,
+.touch-typing-content {
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+}
+
+.touch-typing-visual {
+    text-align: center;
+}
+
+.touch-icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.touch-typing-visual h3,
+.touch-typing-content h3 {
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+
+.touch-typing-visual p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.touch-typing-content ol {
+    padding-left: 22px;
+}
+
+.touch-typing-content li {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   6. ACCURACY COMPARISON
+===================================================== */
+
+.accuracy-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.accuracy-example {
+    padding: 35px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.example-label {
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 800;
+}
+
+.accuracy-example h3 {
+    font-size: 36px;
+    margin: 15px 0 8px;
+}
+
+.good-result,
+.warning-result {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 13px;
+}
+
+.good-result { color: #22c55e; }
+.warning-result { color: #f59e0b; }
+
+.accuracy-example p {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+/* =====================================================
+   7. WORD PRACTICE
+===================================================== */
+
+.word-practice-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.word-group {
+    padding: 25px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.word-group h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.word-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.word-list span {
+    padding: 9px 13px;
+    background: rgba(120,108,255,0.1);
+    border: 1px solid rgba(120,108,255,0.2);
+    border-radius: 7px;
+    color: var(--accent-light);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =====================================================
+   8. WEAK KEYS
+===================================================== */
+
+.weak-keys {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.weak-keys span {
+    background: rgba(120,108,255,0.16);
+    border-color: rgba(120,108,255,0.35);
+    color: var(--accent-light);
+}
+
+/* =====================================================
+   9. SPEED TECHNIQUES
+===================================================== */
+
+.speed-steps {
+    max-width: 850px;
+    margin: auto;
+    display: grid;
+    gap: 15px;
+}
+
+.speed-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color 0.25s ease;
+}
+
+.speed-step:hover {
+    border-color: var(--accent);
+}
+
+.speed-step > span {
+    min-width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(120,108,255,0.15);
+    color: var(--accent-light);
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.speed-step h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.speed-step p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   10. DAILY ROUTINE
+===================================================== */
+
+.routine-card {
+    max-width: 750px;
+    margin: auto;
+    padding: 30px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.routine-item {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 19px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.routine-time {
+    min-width: 85px;
+    padding: 9px;
+    text-align: center;
+    border-radius: 8px;
+    background: rgba(120,108,255,0.15);
+    color: var(--accent-light);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.routine-item h3 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.routine-item p {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.routine-total {
+    padding-top: 22px;
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 14px;
+}
+
+.routine-total strong {
+    color: var(--accent-light);
+}
+
+/* =====================================================
+   11. COMMON MISTAKES
+===================================================== */
+
+.mistake-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.mistake-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.mistake-item span {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(239,68,68,0.13);
+    color: #f87171;
+    font-weight: 800;
+}
+
+.mistake-item p {
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   12. FINAL CTA & FOOTER
+===================================================== */
+
+.learning-cta {
+    width: min(1160px, calc(100% - 48px));
+    margin: 50px auto 85px;
+    padding: 70px 25px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(120,108,255,0.22), transparent 65%),
+        var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+}
+
+.learning-cta > p {
+    max-width: 570px;
+    margin: 0 auto 28px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.learning-cta .learning-hero-buttons {
+    justify-content: center;
+}
+
+.learning-footer {
+    padding: 25px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.learning-footer p {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .learning-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 45px;
+    }
+
+    .learning-hero-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .learning-hero-buttons {
+        justify-content: center;
+    }
+
+    .learning-highlights {
+        justify-content: center;
+    }
+
+    .learning-hero-visual {
+        max-width: 550px;
+        margin: auto;
+        width: 100%;
+    }
+
+    .guide-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .finger-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .word-practice-card {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mistake-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+
+    .learning-hero {
+        width: calc(100% - 36px);
+        padding: 65px 0;
+        min-height: auto;
+    }
+
+    .learning-hero-content h1 {
+        font-size: 37px;
+        letter-spacing: -1.7px;
+    }
+
+    .learning-hero-content > p {
+        font-size: 14px;
+    }
+
+    .learning-highlights {
+        gap: 18px;
+    }
+
+    .learning-highlights strong {
+        font-size: 17px;
+    }
+
+    .hero-keyboard-card {
+        padding: 25px 12px;
+        transform: none;
+    }
+
+    .mini-keyboard {
+        gap: 8px;
+    }
+
+    .mini-keyboard div:not(.space-key) {
+        padding: 12px 2px;
+        word-spacing: 2px;
+    }
+
+    .guide-section {
+        width: calc(100% - 36px);
+        padding: 65px 0;
+    }
+
+    .alternate-section {
+        width: 100%;
+        padding: 65px 18px;
+    }
+
+    .section-heading {
+        margin-bottom: 32px;
+    }
+
+    .section-heading h2,
+    .learning-cta h2 {
+        font-size: 27px;
+    }
+
+    .section-heading p {
+        font-size: 13px;
+    }
+
+    .guide-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-card {
+        padding: 22px;
+    }
+
+    .keyboard-diagram,
+    .finger-explanation {
+        padding: 17px 12px;
+    }
+
+    .key-row {
+        gap: 3px;
+    }
+
+    .key-row span {
+        min-height: 38px;
+        font-size: 10px;
+    }
+
+    .finger-explanation li {
+        font-size: 12px;
+    }
+
+    .home-row-card,
+    .exercise-box,
+    .weak-key-card {
+        padding: 22px 15px;
+    }
+
+    .home-row-keys {
+        gap: 7px;
+    }
+
+    .home-row-keys span,
+    .weak-keys span {
+        width: 39px;
+        height: 42px;
+        font-size: 15px;
+    }
+
+    .touch-typing-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .touch-typing-visual,
+    .touch-typing-content {
+        padding: 24px;
+    }
+
+    .accuracy-comparison {
+        grid-template-columns: 1fr;
+    }
+
+    .accuracy-example {
+        padding: 25px;
+    }
+
+    .word-practice-card {
+        grid-template-columns: 1fr;
+    }
+
+    .speed-step {
+        gap: 13px;
+        padding: 17px;
+    }
+
+    .speed-step > span {
+        min-width: 37px;
+        height: 37px;
+    }
+
+    .routine-card {
+        padding: 18px;
+    }
+
+    .routine-item {
+        gap: 12px;
+    }
+
+    .routine-time {
+        min-width: 68px;
+        font-size: 10px;
+    }
+
+    .mistake-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-cta {
+        width: calc(100% - 36px);
+        padding: 50px 18px;
+        margin-bottom: 60px;
+    }
+
+    .learning-hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .learning-hero-buttons a {
+        width: 100%;
+    }
+}
+/* ==========================================
+   TypeMaster - Learning Guide Images
+========================================== */
+
+.learning-image-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto 20px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.learning-guide-image {
+    display: block;
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================
+   TypeMaster - Number Row Typing Lesson
+========================================== */
+
+.number-row-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: 35px auto 0;
+}
+
+.number-row-keyboard,
+.number-row-tips,
+.number-practice-box {
+    background: var(--card-bg, #ffffff);
+    padding: 28px;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+}
+
+.number-row-keyboard h3,
+.number-row-tips h3,
+.number-practice-box h3 {
+    margin-bottom: 10px;
+}
+
+.number-row-keyboard > p,
+.number-practice-box > p {
+    margin-bottom: 22px;
+    color: var(--text-secondary, #777777);
+}
+
+.number-keys {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.number-key {
+    min-width: 0;
+    min-height: 95px;
+    padding: 12px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+    background: var(--background-color, #f4f6fa);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    text-align: center;
+}
+
+.number-key strong {
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--primary-color, #4f46e5);
+}
+
+.number-key span {
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--text-secondary, #777777);
+}
+
+.number-row-tips {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.number-row-tips h3 {
+    margin-bottom: 5px;
+}
+
+.number-tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.number-tip > span {
+    min-width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--primary-color, #4f46e5);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.number-tip h4 {
+    margin: 0 0 7px;
+}
+
+.number-tip p {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--text-secondary, #777777);
+}
+
+.number-practice-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.number-practice-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 18px;
+    border-radius: 10px;
+    background: var(--background-color, #f4f6fa);
+}
+
+.number-practice-item span {
+    font-weight: 600;
+}
+
+.number-practice-item code {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-color, #4f46e5);
+    overflow-wrap: anywhere;
+}
+
+.number-warning {
+    padding: 20px 24px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary-color, #4f46e5);
+    border-radius: 8px;
+    background: var(--background-color, #f4f6fa);
+    line-height: 1.7;
+}
+
+.number-warning strong {
+    color: var(--primary-color, #4f46e5);
+}
+
+/* Responsive Number Row Lesson */
+
+@media (max-width: 768px) {
+    .number-keys {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .number-key {
+        min-height: 85px;
+    }
+
+    .number-row-keyboard,
+    .number-row-tips,
+    .number-practice-box {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .number-row-keyboard,
+    .number-row-tips,
+    .number-practice-box {
+        padding: 16px;
+    }
+
+    .number-keys {
+        gap: 7px;
+    }
+
+    .number-key {
+        min-height: 75px;
+        padding: 8px 3px;
+    }
+
+    .number-key strong {
+        font-size: 21px;
+    }
+
+    .number-key span {
+        font-size: 10px;
+    }
+
+    .number-practice-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .number-practice-item code {
+        font-size: 14px;
+    }
+}
+
+/* ==========================================
+   TypeMaster - Special Characters & Symbols
+========================================== */
+
+.symbol-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: 35px auto 0;
+}
+
+.symbol-card {
+    background: var(--card-bg, #ffffff);
+    padding: 28px;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.15);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+}
+
+.symbol-card h3 {
+    margin-bottom: 10px;
+}
+
+.symbol-card > p {
+    margin-bottom: 22px;
+    color: var(--text-secondary, #777777);
+}
+
+.symbol-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.symbol-key {
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 12px;
+    background: var(--background-color, #f4f6fa);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.symbol-key strong {
+    font-size: 30px;
+    color: var(--primary-color, #4f46e5);
+}
+
+.symbol-key span {
+    font-size: 13px;
+    color: var(--text-secondary, #777777);
+}
+
+.symbol-groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.symbol-group {
+    padding: 20px;
+    border-radius: 12px;
+    background: var(--background-color, #f4f6fa);
+}
+
+.symbol-group h4 {
+    margin-bottom: 12px;
+}
+
+.symbol-group code {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary-color, #4f46e5);
+    overflow-wrap: anywhere;
+}
+
+.symbol-tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.symbol-tip > span {
+    min-width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--primary-color, #4f46e5);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.symbol-tip h4 {
+    margin: 0 0 7px;
+}
+
+.symbol-tip p {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--text-secondary, #777777);
+}
+
+.symbol-practice {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.symbol-exercise {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 16px 18px;
+    border-radius: 10px;
+    background: var(--background-color, #f4f6fa);
+}
+
+.symbol-exercise span {
+    font-weight: 600;
+}
+
+.symbol-exercise code {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary-color, #4f46e5);
+    overflow-wrap: anywhere;
+}
+
+.symbol-warning {
+    padding: 20px 24px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary-color, #4f46e5);
+    border-radius: 8px;
+    background: var(--background-color, #f4f6fa);
+    line-height: 1.7;
+}
+
+.symbol-warning strong {
+    color: var(--primary-color, #4f46e5);
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+    .symbol-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .symbol-groups {
+        grid-template-columns: 1fr;
+    }
+
+    .symbol-card {
+        padding: 20px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .symbol-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .symbol-card {
+        padding: 16px;
+    }
+
+    .symbol-key {
+        min-height: 85px;
+    }
+
+    .symbol-key strong {
+        font-size: 25px;
+    }
+
+    .symbol-exercise {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .symbol-exercise code {
+        font-size: 14px;
+    }
+
+}

@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | TypeMaster</title>
+
+    <link rel="stylesheet" href="../../admin/css/admin.css">
+</head>
+
+<body>
+
+    <div class="admin-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <h2>TypeMaster</h2>
+                <span>ADMIN PANEL</span>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#" class="nav-link active">
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+                <a href="#messages" class="nav-link">
+                    <span>✉</span>
+                    Messages
+                </a>
+
+                <a href="#" class="nav-link">
+                    <span>⚙</span>
+                    Settings
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a href="../index.html" class="nav-link">
+                    <span>↗</span>
+                    Visit Website
+                </a>
+
+                <button class="logout-btn" id="logoutBtn">
+                    <span>⇥</span>
+                    Logout
+                </button>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top Navbar -->
+            <header class="topbar">
+
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome back, Admin!</p>
+                </div>
+
+                <div class="admin-profile">
+                    <div class="profile-avatar">A</div>
+
+                    <div>
+                        <h4 id="adminName">Admin</h4>
+                        <span>Administrator</span>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- Dashboard Content -->
+            <section class="dashboard-content">
+
+                <div class="section-heading">
+                    <h2>Overview</h2>
+                    <p>Here's what's happening with your website.</p>
+                </div>
+
+
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon blue">✉</div>
+
+                        <div>
+                            <p>Total Messages</p>
+                            <h2 id="totalMessages">0</h2>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">●</div>
+
+                        <div>
+                            <p>Unread Messages</p>
+                            <h2 id="unreadMessages">0</h2>
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">✓</div>
+
+                        <div>
+                            <p>Read Messages</p>
+                            <h2 id="readMessages">0</h2>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Messages Section -->
+                <section class="messages-section" id="messages">
+
+                    <div class="messages-header">
+                        <div>
+                            <h2>Recent Messages</h2>
+                            <p>Manage messages received from visitors.</p>
+                        </div>
+
+                        <button class="refresh-btn" id="refreshBtn">
+                            ↻ Refresh
+                        </button>
+                    </div>
+
+
+                    <!-- Messages Table -->
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>EMAIL</th>
+                                    <th>SUBJECT</th>
+                                    <th>STATUS</th>
+                                    <th>DATE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="messagesTableBody">
+
+                                <tr>
+                                    <td colspan="6">
+                                        Loading messages...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/admin.js"></script>
+
+</body>
+</html>

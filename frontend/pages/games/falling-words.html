@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="TypeMaster Falling Words typing game - improve your typing speed and accuracy."
+    >
+
+    <title>Falling Words - TypeMaster</title>
+
+    <!-- Main Website CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/themes.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+
+    <!-- Game CSS -->
+    <link rel="stylesheet" href="../../css/falling-words.css">
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="../../index.html" class="logo">
+                Type<span>Master</span>
+            </a>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="../../index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../practice.html">
+                        Typing Test
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../lessons.html">
+                        Practice
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../dashboard.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../leaderboard.html">
+                        Leaderboard
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="nav-actions">
+
+                <a href="../login.html" class="login-btn">
+                    Login
+                </a>
+
+                <a href="../register.html" class="signup-btn">
+                    Get Started
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         GAME PAGE
+    =========================================== -->
+
+    <main class="falling-words-page">
+
+
+        <!-- Game Heading -->
+
+        <section class="game-heading">
+
+            <span class="game-label">
+                TYPEMASTER GAME
+            </span>
+
+            <h1>
+                Falling <span>Words</span>
+            </h1>
+
+            <p>
+                Type the falling words before they reach
+                the bottom of the screen.
+            </p>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             GAME AREA
+        =========================================== -->
+
+        <section class="game-wrapper">
+
+
+            <!-- Game Stats -->
+
+            <div class="game-stats">
+
+
+                <div class="stat-box">
+
+                    <span>
+                        SCORE
+                    </span>
+
+                    <strong id="score">
+                        0
+                    </strong>
+
+                </div>
+
+
+               <div class="stat-box">
+
+    <small>
+        WORDS
+    </small>
+
+    <strong id="wordsTyped">
+        0
+    </strong>
+
+</div>
+
+                <div class="stat-box">
+
+                    <span>
+                        LIVES
+                    </span>
+
+                    <strong id="lives">
+                        3
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <span>
+                        LEVEL
+                    </span>
+
+                    <strong id="level">
+                        1
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Game Screen -->
+
+            <div class="game-screen" id="gameScreen">
+
+                <div class="game-start-message" id="startMessage">
+
+                    <div class="start-icon">
+                        ⌨️
+                    </div>
+
+                    <h2>
+                        Ready to Type?
+                    </h2>
+
+                    <p>
+                        Click the button below to start
+                        the Falling Words game.
+                    </p>
+
+                    <button
+                        id="startGameButton"
+                        class="start-game-btn"
+                        type="button"
+                    >
+                        Start Game →
+                    </button>
+
+                </div>
+
+
+                <!-- Falling words will appear here -->
+
+            </div>
+
+
+
+            <!-- Typing Input -->
+
+            <div class="typing-area">
+
+                <input
+                    type="text"
+                    id="wordInput"
+                    placeholder="Type the falling word here..."
+                    autocomplete="off"
+                    spellcheck="false"
+                    disabled
+                >
+
+                <button
+                    id="restartButton"
+                    class="restart-btn"
+                    type="button"
+                >
+                    Restart
+                </button>
+
+            </div>
+
+
+            <!-- Game Status -->
+
+            <div
+                id="gameStatus"
+                class="game-status"
+            >
+                Start the game to begin typing.
+            </div>
+
+        </section>
+
+
+
+        <!-- Back Button -->
+
+        <div class="back-to-games">
+
+            <a href="../../index.html">
+                ← Back to TypeMaster
+            </a>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div>
+
+                <a href="../../index.html" class="logo">
+                    Type<span>Master</span>
+                </a>
+
+                <p>
+                    Practice smarter. Type faster. Achieve more.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="../about.html">
+                    About
+                </a>
+
+                <a href="../contact.html">
+                    Contact
+                </a>
+
+                <a href="../feedback.html">
+                    Feedback
+                </a>
+
+                <a href="../settings.html">
+                    Settings
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <p class="copyright">
+            © 2026 TypeMaster. All rights reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- Main Website JavaScript -->
+    <script src="../../js/app.js"></script>
+
+    <!-- Falling Words JavaScript -->
+    <script src="../../js/falling-words.js"></script>
+
+</body>
+
+</html>

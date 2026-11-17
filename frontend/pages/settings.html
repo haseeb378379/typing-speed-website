@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Customize your TypeMaster typing experience."
+    >
+
+    <title>Settings - TypeMaster</title>
+
+    <!-- Main Website CSS -->
+<link rel="stylesheet" href="../css/style.css">
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="../css/themes.css">
+    <style>
+        /* ==========================================
+           TYPEMASTER SETTINGS PAGE
+        ========================================== */
+
+        :root {
+            --settings-bg: #080d1d;
+            --settings-card: #111827;
+            --settings-card-hover: #151f33;
+            --settings-text: #f8fafc;
+            --settings-muted: #94a3b8;
+            --settings-border: #263244;
+            --settings-primary: #6366f1;
+            --settings-primary-hover: #7c3aed;
+        }
+
+
+        /* ==========================================
+           PAGE
+        ========================================== */
+
+        body {
+            background: var(--settings-bg);
+        }
+
+        .settings-page {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 55px 25px 90px;
+            color: var(--settings-text);
+        }
+
+
+        /* ==========================================
+           HEADER
+        ========================================== */
+
+        .settings-header {
+            margin-bottom: 35px;
+        }
+
+        .settings-header h1 {
+            margin: 0 0 10px;
+            color: var(--settings-text);
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .settings-header p {
+            margin: 0;
+            color: var(--settings-muted);
+            font-size: 16px;
+        }
+
+
+        /* ==========================================
+           SETTINGS CARD
+        ========================================== */
+
+        .settings-section {
+            background: var(--settings-card);
+            border: 1px solid var(--settings-border);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 22px;
+            color: var(--settings-text);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .settings-section h2 {
+            margin: 0 0 20px;
+            color: var(--settings-text);
+            font-size: 21px;
+            font-weight: 750;
+        }
+
+
+        /* ==========================================
+           SETTING ROW
+        ========================================== */
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 25px;
+            padding: 20px 0;
+
+            border-bottom: 1px solid var(--settings-border);
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .setting-row:first-of-type {
+            padding-top: 5px;
+        }
+
+
+        /* ==========================================
+           TEXT
+        ========================================== */
+
+        .setting-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .setting-info h3 {
+            margin: 0 0 7px;
+            color: var(--settings-text);
+            font-size: 16px;
+            font-weight: 650;
+        }
+
+        .setting-info p {
+            margin: 0;
+            color: var(--settings-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* ==========================================
+           SELECT
+        ========================================== */
+
+        .setting-select {
+            min-width: 180px;
+
+            padding: 11px 14px;
+
+            border: 1px solid var(--settings-border);
+            border-radius: 8px;
+
+            background: #0f172a;
+            color: var(--settings-text);
+
+            font-size: 14px;
+            outline: none;
+
+            cursor: pointer;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .setting-select:hover {
+            border-color: #3b82f6;
+        }
+
+        .setting-select:focus {
+            border-color: #6366f1;
+        }
+
+        .setting-select option {
+            background: #111827;
+            color: #f8fafc;
+        }
+
+
+        /* ==========================================
+           TOGGLE SWITCH
+        ========================================== */
+
+        .switch {
+            position: relative;
+
+            display: inline-block;
+
+            width: 52px;
+            height: 28px;
+
+            flex-shrink: 0;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+
+            background: #475569;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            transition: background 0.25s ease;
+        }
+
+        .slider::before {
+            content: "";
+
+            position: absolute;
+
+            width: 22px;
+            height: 22px;
+
+            left: 3px;
+            top: 3px;
+
+            background: #ffffff;
+
+            border-radius: 50%;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .switch input:checked + .slider {
+            background: #2563eb;
+        }
+
+        .switch input:checked + .slider::before {
+            transform: translateX(24px);
+        }
+
+
+        /* ==========================================
+           BUTTONS
+        ========================================== */
+
+        .settings-actions {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 28px;
+        }
+
+        .settings-btn {
+            border: none;
+
+            padding: 12px 24px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .settings-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .save-btn {
+            background: var(--settings-primary);
+            color: #ffffff;
+        }
+
+        .save-btn:hover {
+            background: var(--settings-primary-hover);
+        }
+
+        .reset-btn {
+            background: #1e293b;
+            color: #f8fafc;
+
+            border: 1px solid var(--settings-border);
+        }
+
+        .reset-btn:hover {
+            background: #263449;
+        }
+
+
+        /* ==========================================
+           MESSAGE
+        ========================================== */
+
+        #settingsMessage {
+            margin-top: 18px;
+
+            min-height: 20px;
+
+            color: #4ade80;
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 650px) {
+
+            .settings-page {
+                padding: 35px 15px 60px;
+            }
+
+            .settings-header h1 {
+                font-size: 29px;
+            }
+
+            .settings-section {
+                padding: 20px;
+            }
+
+            .setting-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .setting-select {
+                width: 100%;
+            }
+
+            .switch {
+                margin-top: 5px;
+            }
+
+            .settings-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .settings-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ==========================================
+         SETTINGS PAGE
+    ========================================== -->
+
+    <main class="settings-page">
+
+        <!-- HEADER -->
+        <div class="settings-header">
+
+            <h1>
+                Settings
+            </h1>
+
+            <p>
+                Customize your TypeMaster experience.
+            </p>
+
+        </div>
+
+
+        <!-- ======================================
+             APPEARANCE
+        ======================================= -->
+
+        <section class="settings-section">
+
+            <h2>
+                🎨 Appearance
+            </h2>
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Dark Mode
+                    </h3>
+
+                    <p>
+                        Use dark mode across the website.
+                    </p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="darkMode"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             TYPING
+        ======================================= -->
+
+        <section class="settings-section">
+
+            <h2>
+                ⌨️ Typing
+            </h2>
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Test Duration
+                    </h3>
+
+                    <p>
+                        Select your default typing test duration.
+                    </p>
+
+                </div>
+
+                <select
+                    id="testDuration"
+                    class="setting-select"
+                >
+
+                    <option value="30">
+                        30 Seconds
+                    </option>
+
+                    <option value="60">
+                        60 Seconds
+                    </option>
+
+                    <option value="120">
+                        2 Minutes
+                    </option>
+
+                    <option value="300">
+                        5 Minutes
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Live WPM
+                    </h3>
+
+                    <p>
+                        Show your typing speed while typing.
+                    </p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="liveWpm"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             SOUND
+        ======================================= -->
+
+        <section class="settings-section">
+
+            <h2>
+                🔊 Sound
+            </h2>
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Typing Sound
+                    </h3>
+
+                    <p>
+                        Play a sound when typing.
+                    </p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="typingSound"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Game Sound
+                    </h3>
+
+                    <p>
+                        Enable sound effects in typing games.
+                    </p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="gameSound"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             GAMES
+        ======================================= -->
+
+        <section class="settings-section">
+
+            <h2>
+                🎮 Games
+            </h2>
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Game Difficulty
+                    </h3>
+
+                    <p>
+                        Select your default game difficulty.
+                    </p>
+
+                </div>
+
+                <select
+                    id="gameDifficulty"
+                    class="setting-select"
+                >
+
+                    <option value="easy">
+                        Easy
+                    </option>
+
+                    <option value="medium">
+                        Medium
+                    </option>
+
+                    <option value="hard">
+                        Hard
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             ACTIONS
+        ======================================= -->
+
+        <div class="settings-actions">
+
+            <button
+                type="button"
+                id="saveSettings"
+                class="settings-btn save-btn"
+            >
+                Save Settings
+            </button>
+
+
+            <button
+                type="button"
+                id="resetSettings"
+                class="settings-btn reset-btn"
+            >
+                Reset
+            </button>
+
+        </div>
+
+
+        <!-- STATUS MESSAGE -->
+
+        <p id="settingsMessage"></p>
+
+    </main>
+
+
+    <!-- Settings JavaScript -->
+    <script src="../js/settings.js"></script>
+
+</body>
+</html>

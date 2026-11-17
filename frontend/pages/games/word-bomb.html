@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Play Word Bomb and improve your typing speed and accuracy.">
+
+    <title>TypeMaster - Word Bomb</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1224;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 66px;
+            background: #070d1c;
+            border-bottom: 1px solid #1d2942;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #9b6cff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #aeb9cc;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .login {
+            margin-left: 20px;
+        }
+
+        .get-started {
+            background: linear-gradient(135deg, #8d5cff, #a66cff);
+            color: white !important;
+            padding: 11px 19px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(141, 92, 255, 0.25);
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .game-page {
+            width: 92%;
+            max-width: 1180px;
+            margin: 38px auto 70px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #7ca9ff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .game-label {
+            color: #4fa3ff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .game-header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .game-header p {
+            color: #8794aa;
+            font-size: 14px;
+        }
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .game-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .stat-box {
+            background: #121c33;
+            border: 1px solid #263553;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-label {
+            display: block;
+            color: #8491a8;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 7px;
+        }
+
+        .stat-value {
+            display: block;
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        /* =========================
+           GAME AREA
+        ========================= */
+
+        .game-container {
+            background: #101a30;
+            border: 1px solid #293956;
+            border-radius: 16px;
+            padding: 30px;
+            min-height: 570px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .difficulty {
+            color: #8996ac;
+            font-size: 12px;
+        }
+
+        .difficulty span {
+            color: #65a8ff;
+            font-weight: 800;
+        }
+
+        .bomb-status {
+            color: #ff8d8d;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        /* =========================
+           BOMB
+        ========================= */
+
+        .bomb-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 245px;
+            position: relative;
+        }
+
+        .bomb {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #59406f 0%,
+                    #321b49 35%,
+                    #21132f 70%,
+                    #120d1c 100%
+                );
+
+            border: 4px solid #5b326e;
+
+            box-shadow:
+                0 0 30px rgba(164, 68, 255, 0.25),
+                inset -12px -15px 20px rgba(0, 0, 0, 0.35);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+            transition: 0.15s;
+        }
+
+        .bomb::before {
+            content: "";
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.035);
+
+            position: absolute;
+            top: 18px;
+            left: 25px;
+        }
+
+        .bomb-number {
+            font-size: 39px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+            z-index: 2;
+        }
+
+        .fuse {
+            position: absolute;
+            width: 35px;
+            height: 9px;
+            background: #6f432f;
+            right: -24px;
+            top: 22px;
+            transform: rotate(-25deg);
+            border-radius: 10px;
+        }
+
+        .spark {
+            position: absolute;
+            right: -39px;
+            top: 3px;
+            font-size: 25px;
+        }
+
+        .bomb.warning {
+            border-color: #e9a23a;
+            box-shadow:
+                0 0 35px rgba(255, 159, 51, 0.45),
+                inset -12px -15px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .bomb.danger {
+            border-color: #ff4d65;
+            box-shadow:
+                0 0 45px rgba(255, 50, 70, 0.6),
+                inset -12px -15px 20px rgba(0, 0, 0, 0.35);
+
+            animation: shake 0.18s infinite;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-3px) rotate(-1deg);
+            }
+
+            50% {
+                transform: translateX(3px) rotate(1deg);
+            }
+
+            75% {
+                transform: translateX(-3px) rotate(-1deg);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* =========================
+           WORD
+        ========================= */
+
+        .word-display {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .word-display span {
+            display: inline-block;
+            background: #17233d;
+            border: 1px solid #344566;
+            border-radius: 10px;
+            padding: 13px 25px;
+
+            color: #ffffff;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-area {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        #wordInput {
+            width: 100%;
+            height: 53px;
+
+            background: #0b1327;
+            border: 1px solid #354766;
+            border-radius: 9px;
+
+            color: #ffffff;
+
+            padding: 0 18px;
+
+            font-size: 16px;
+            font-weight: 600;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        #wordInput:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+        }
+
+        #wordInput::placeholder {
+            color: #596780;
+        }
+
+        .input-hint {
+            text-align: center;
+            color: #66748d;
+            font-size: 11px;
+            margin-top: 9px;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .game-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 22px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .start-btn {
+            background: #8b5cf6;
+            color: white;
+            box-shadow: 0 8px 22px rgba(139, 92, 246, 0.22);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-1px);
+            background: #986cff;
+        }
+
+        .restart-btn {
+            display: none;
+            background: #263552;
+            color: white;
+        }
+
+        .restart-btn:hover {
+            background: #334566;
+        }
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        .game-message {
+            text-align: center;
+            min-height: 20px;
+            margin-top: 15px;
+            color: #8f9db4;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .success {
+            color: #58d68d;
+        }
+
+        .error {
+            color: #ff6e7e;
+        }
+
+        /* =========================
+           GAME OVER
+        ========================= */
+
+        .game-over {
+            display: none;
+
+            position: absolute;
+            inset: 0;
+
+            background: rgba(7, 12, 26, 0.94);
+
+            z-index: 20;
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .game-over.show {
+            display: flex;
+        }
+
+        .game-over-box {
+            width: 90%;
+            max-width: 420px;
+
+            background: #131e35;
+            border: 1px solid #334665;
+            border-radius: 15px;
+
+            padding: 32px;
+        }
+
+        .game-over-box h2 {
+            font-size: 29px;
+            margin-bottom: 8px;
+            color: #ff6575;
+        }
+
+        .game-over-box p {
+            color: #8996ad;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .final-score {
+            font-size: 42px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .final-label {
+            color: #697892;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 22px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                padding: 0 4%;
+            }
+
+            .nav-links {
+                gap: 13px;
+            }
+
+            .game-page {
+                width: 94%;
+            }
+
+            .game-container {
+                padding: 20px;
+            }
+
+            .game-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .game-header h1 {
+                font-size: 29px;
+            }
+
+            .bomb {
+                width: 125px;
+                height: 125px;
+            }
+
+            .bomb-number {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 560px) {
+
+            .nav-links a:not(.login):not(.get-started) {
+                display: none;
+            }
+
+            .navbar {
+                height: 60px;
+            }
+
+            .game-page {
+                margin-top: 25px;
+            }
+
+            .game-container {
+                min-height: 540px;
+                padding: 16px;
+            }
+
+            .game-top {
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .word-display span {
+                font-size: 20px;
+            }
+
+            #wordInput {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <a href="../../index.html" style="text-decoration:none;">
+            <div class="logo">
+                Type<span>Master</span>
+            </div>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../../index.html">Home</a>
+
+            <a href="../typing-test.html">Typing Test</a>
+
+            <a href="../practice.html">Practice</a>
+
+            <a href="../dashboard.html">Dashboard</a>
+
+            <a href="../leaderboard.html">Leaderboard</a>
+
+            <a class="login" href="../login.html">Login</a>
+
+            <a class="get-started" href="../register.html">
+                Get Started
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         GAME PAGE
+    ========================= -->
+
+    <main class="game-page">
+
+        <a href="../../index.html" class="back-link">
+            ← Back to Games
+        </a>
+
+
+        <div class="game-header">
+
+            <div class="game-label">
+                GAME 02
+            </div>
+
+            <h1>
+                Word Bomb
+            </h1>
+
+            <p>
+                Type the word before the bomb explodes.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             STATS
+        ========================= -->
+
+        <div class="game-stats">
+
+            <div class="stat-box">
+
+                <span class="stat-label">
+                    SCORE
+                </span>
+
+                <span class="stat-value" id="score">
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <span class="stat-label">
+                    WORDS
+                </span>
+
+                <span class="stat-value" id="words">
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <span class="stat-label">
+                    STREAK
+                </span>
+
+                <span class="stat-value" id="streak">
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <span class="stat-label">
+                    BEST
+                </span>
+
+                <span class="stat-value" id="best">
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             GAME CONTAINER
+        ========================= -->
+
+        <section class="game-container">
+
+            <div class="game-top">
+
+                <div class="difficulty">
+                    Difficulty:
+                    <span id="difficulty">
+                        Easy
+                    </span>
+                </div>
+
+                <div class="bomb-status" id="bombStatus">
+                    Ready
+                </div>
+
+            </div>
+
+
+            <!-- BOMB -->
+
+            <div class="bomb-area">
+
+                <div class="bomb" id="bomb">
+
+                    <div class="fuse"></div>
+
+                    <div class="spark">
+                        ✨
+                    </div>
+
+                    <div class="bomb-number" id="timer">
+                        10
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORD -->
+
+            <div class="word-display">
+
+                <span id="currentWord">
+                    PRESS START
+                </span>
+
+            </div>
+
+
+            <!-- INPUT -->
+
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="wordInput"
+                    placeholder="Type the word here..."
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    disabled
+                >
+
+               <div class="input-hint">
+    Type the word correctly — it will be detected automatically.
+</div>
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="controls">
+
+                <button
+                    class="game-btn start-btn"
+                    id="startButton"
+                >
+                    Start Game
+                </button>
+
+                <button
+                    class="game-btn restart-btn"
+                    id="restartButton"
+                >
+                    Restart
+                </button>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div class="game-message" id="gameMessage">
+                Get ready...
+            </div>
+
+
+            <!-- =========================
+                 GAME OVER
+            ========================= -->
+
+            <div class="game-over" id="gameOver">
+
+                <div class="game-over-box">
+
+                    <h2>
+                        💥 Bomb Exploded!
+                    </h2>
+
+                    <p>
+                        You were too slow. Try again and beat your score.
+                    </p>
+
+                    <div class="final-score" id="finalScore">
+                        0
+                    </div>
+
+                    <div class="final-label">
+                        FINAL SCORE
+                    </div>
+
+                    <button
+                        class="game-btn start-btn"
+                        id="playAgainButton"
+                    >
+                        Play Again
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* ==========================================
+           WORD BOMB GAME
+        ========================================== */
+
+        const wordsList = [
+            "apple",
+            "water",
+            "mouse",
+            "keyboard",
+            "screen",
+            "computer",
+            "coding",
+            "python",
+            "javascript",
+            "website",
+            "developer",
+            "program",
+            "internet",
+            "browser",
+            "button",
+            "window",
+            "system",
+            "server",
+            "network",
+            "database",
+            "function",
+            "variable",
+            "object",
+            "string",
+            "number",
+            "school",
+            "student",
+            "learning",
+            "practice",
+            "typing",
+            "master",
+            "speed",
+            "accuracy",
+            "keyboard",
+            "challenge",
+            "technology",
+            "software",
+            "hardware",
+            "security",
+            "future"
+        ];
+
+
+        /* ==========================================
+           ELEMENTS
+        ========================================== */
+
+        const scoreElement =
+            document.getElementById("score");
+
+        const wordsElement =
+            document.getElementById("words");
+
+        const streakElement =
+            document.getElementById("streak");
+
+        const bestElement =
+            document.getElementById("best");
+
+        const timerElement =
+            document.getElementById("timer");
+
+        const currentWordElement =
+            document.getElementById("currentWord");
+
+        const wordInput =
+            document.getElementById("wordInput");
+
+        const startButton =
+            document.getElementById("startButton");
+
+        const restartButton =
+            document.getElementById("restartButton");
+
+        const playAgainButton =
+            document.getElementById("playAgainButton");
+
+        const gameMessage =
+            document.getElementById("gameMessage");
+
+        const bomb =
+            document.getElementById("bomb");
+
+        const bombStatus =
+            document.getElementById("bombStatus");
+
+        const difficultyElement =
+            document.getElementById("difficulty");
+
+        const gameOver =
+            document.getElementById("gameOver");
+
+        const finalScore =
+            document.getElementById("finalScore");
+
+
+        /* ==========================================
+           GAME VARIABLES
+        ========================================== */
+
+        let score = 0;
+        let wordsTyped = 0;
+        let streak = 0;
+        let best = Number(
+            localStorage.getItem("wordBombBest") || 0
+        );
+
+        let currentWord = "";
+
+        let timer = 10;
+        let countdown = null;
+
+        let gameRunning = false;
+
+
+        bestElement.textContent = best;
+
+
+        /* ==========================================
+           RANDOM WORD
+        ========================================== */
+
+        function getRandomWord() {
+
+            const randomIndex =
+                Math.floor(
+                    Math.random() * wordsList.length
+                );
+
+            return wordsList[randomIndex];
+        }
+
+
+        /* ==========================================
+           START GAME
+        ========================================== */
+
+        function startGame() {
+
+            clearInterval(countdown);
+
+            score = 0;
+            wordsTyped = 0;
+            streak = 0;
+            timer = 10;
+
+            gameRunning = true;
+
+            scoreElement.textContent = score;
+            wordsElement.textContent = wordsTyped;
+            streakElement.textContent = streak;
+
+            wordInput.disabled = false;
+
+            wordInput.value = "";
+
+            startButton.style.display = "none";
+            restartButton.style.display = "inline-block";
+
+            gameOver.classList.remove("show");
+
+            bomb.classList.remove(
+                "warning",
+                "danger"
+            );
+
+            bombStatus.textContent = "ACTIVE";
+
+            bombStatus.style.color =
+                "#58d68d";
+
+            gameMessage.textContent =
+                "Type the word before the bomb reaches zero.";
+
+            gameMessage.className =
+                "game-message";
+
+            nextWord();
+
+            wordInput.focus();
+
+            startCountdown();
+        }
+
+
+        /* ==========================================
+           NEXT WORD
+        ========================================== */
+
+        function nextWord() {
+
+            currentWord =
+                getRandomWord();
+
+            currentWordElement.textContent =
+                currentWord;
+
+            wordInput.value = "";
+
+            timer = getTimeForLevel();
+
+            timerElement.textContent =
+                timer;
+
+            updateBombState();
+        }
+
+
+        /* ==========================================
+           DIFFICULTY
+        ========================================== */
+
+        function getTimeForLevel() {
+
+            if (wordsTyped < 5) {
+
+                difficultyElement.textContent =
+                    "Easy";
+
+                return 10;
+
+            }
+
+            if (wordsTyped < 10) {
+
+                difficultyElement.textContent =
+                    "Medium";
+
+                return 8;
+
+            }
+
+            if (wordsTyped < 20) {
+
+                difficultyElement.textContent =
+                    "Hard";
+
+                return 7;
+
+            }
+
+            difficultyElement.textContent =
+                "Extreme";
+
+            return 6;
+        }
+
+
+        /* ==========================================
+           COUNTDOWN
+        ========================================== */
+
+        function startCountdown() {
+
+            countdown =
+                setInterval(function () {
+
+                    if (!gameRunning) {
+                        return;
+                    }
+
+                    timer--;
+
+                    timerElement.textContent =
+                        timer;
+
+                    updateBombState();
+
+                    if (timer <= 0) {
+
+                        explodeBomb();
+
+                    }
+
+                }, 1000);
+        }
+
+
+        /* ==========================================
+           BOMB STATE
+        ========================================== */
+
+        function updateBombState() {
+
+            bomb.classList.remove(
+                "warning",
+                "danger"
+            );
+
+            if (timer <= 3) {
+
+                bomb.classList.add(
+                    "danger"
+                );
+
+                bombStatus.textContent =
+                    "DANGER";
+
+                bombStatus.style.color =
+                    "#ff6575";
+
+            }
+
+            else if (timer <= 5) {
+
+                bomb.classList.add(
+                    "warning"
+                );
+
+                bombStatus.textContent =
+                    "WARNING";
+
+                bombStatus.style.color =
+                    "#f0a43b";
+
+            }
+
+            else {
+
+                bombStatus.textContent =
+                    "ACTIVE";
+
+                bombStatus.style.color =
+                    "#58d68d";
+            }
+        }
+
+
+        /* ==========================================
+           CHECK WORD
+        ========================================== */
+
+       wordInput.addEventListener(
+    "input",
+    function () {
+
+        if (!gameRunning) {
+            return;
+        }
+
+        const typedWord =
+            wordInput.value
+                .trim()
+                .toLowerCase();
+
+        // Automatically detect correct word
+        if (
+            typedWord === currentWord
+        ) {
+
+            correctWord();
+
+        }
+
+        // Agar user expected word se zyada type kare
+        else if (
+            typedWord.length > currentWord.length
+        ) {
+
+            wrongWord();
+
+        }
+
+    }
+);
+
+
+        /* ==========================================
+           CORRECT WORD
+        ========================================== */
+
+        function correctWord() {
+
+            wordsTyped++;
+
+            streak++;
+
+            const timeBonus =
+                timer * 2;
+
+            const streakBonus =
+                streak * 2;
+
+            score +=
+                10 +
+                timeBonus +
+                streakBonus;
+
+            scoreElement.textContent =
+                score;
+
+            wordsElement.textContent =
+                wordsTyped;
+
+            streakElement.textContent =
+                streak;
+
+            if (score > best) {
+
+                best = score;
+
+                bestElement.textContent =
+                    best;
+
+                localStorage.setItem(
+                    "wordBombBest",
+                    best
+                );
+            }
+
+            gameMessage.textContent =
+                "✓ Correct! Keep going.";
+
+            gameMessage.className =
+                "game-message success";
+
+            nextWord();
+        }
+
+
+        /* ==========================================
+           WRONG WORD
+        ========================================== */
+
+        function wrongWord() {
+
+            streak = 0;
+
+            streakElement.textContent =
+                streak;
+
+            gameMessage.textContent =
+                "✗ Wrong word! Try again.";
+
+            gameMessage.className =
+                "game-message error";
+
+            wordInput.value = "";
+
+            wordInput.focus();
+        }
+
+
+        /* ==========================================
+           BOMB EXPLOSION
+        ========================================== */
+
+        function explodeBomb() {
+
+            clearInterval(countdown);
+
+            gameRunning = false;
+
+            wordInput.disabled = true;
+
+            bombStatus.textContent =
+                "EXPLODED";
+
+            bombStatus.style.color =
+                "#ff6575";
+
+            finalScore.textContent =
+                score;
+
+            gameOver.classList.add(
+                "show"
+            );
+
+            gameMessage.textContent =
+                "The bomb exploded!";
+
+            gameMessage.className =
+                "game-message error";
+        }
+
+
+        /* ==========================================
+           RESTART
+        ========================================== */
+
+        restartButton.addEventListener(
+            "click",
+            startGame
+        );
+
+        playAgainButton.addEventListener(
+            "click",
+            startGame
+        );
+
+        startButton.addEventListener(
+            "click",
+            startGame
+        );
+
+
+    </script>
+
+</body>
+</html>

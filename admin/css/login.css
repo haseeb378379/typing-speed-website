@@ -1,0 +1,201 @@
+
+/* =================================
+   TypeMaster Admin Login
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #111827, #1e3a8a);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Login Container */
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Login Card */
+
+.login-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* Logo */
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo-icon {
+    width: 55px;
+    height: 55px;
+    background: #2563eb;
+    color: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 auto 12px;
+}
+
+.login-logo h1 {
+    font-size: 25px;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.login-logo p {
+    color: #64748b;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* Heading */
+
+.login-heading {
+    margin-bottom: 25px;
+}
+
+.login-heading h2 {
+    font-size: 23px;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.login-heading p {
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Form */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 9px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-group input::placeholder {
+    color: #94a3b8;
+}
+
+/* Login Button */
+
+#loginBtn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#loginBtn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+#loginBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Login Message */
+
+.login-message {
+    font-size: 13px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.login-message.error {
+    color: #dc2626;
+}
+
+.login-message.success {
+    color: #16a34a;
+}
+
+/* Footer */
+
+.login-footer {
+    text-align: center;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.login-footer p {
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.login-footer a {
+    color: #2563eb;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+
+    .login-card {
+        padding: 28px 22px;
+    }
+
+    .login-heading h2 {
+        font-size: 21px;
+    }
+
+}

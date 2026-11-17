@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Play Typing Race and improve your typing speed and accuracy.">
+
+    <title>TypeMaster - Typing Race</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1224;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            height: 66px;
+            background: #070d1c;
+            border-bottom: 1px solid #1d2942;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #9b6cff;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #aeb9cc;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .get-started {
+            background: linear-gradient(135deg, #8d5cff, #a66cff);
+            color: #ffffff !important;
+            padding: 11px 19px;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .game-page {
+            width: 92%;
+            max-width: 1180px;
+            margin: 38px auto 70px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #7ca9ff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .game-label {
+            color: #4fa3ff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .game-header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .game-header p {
+            color: #8794aa;
+            font-size: 14px;
+        }
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .stat-box {
+            background: #121c33;
+            border: 1px solid #263553;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-label {
+            display: block;
+            color: #8491a8;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 7px;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        /* =========================
+           GAME BOX
+        ========================= */
+
+        .game-container {
+            background: #101a30;
+            border: 1px solid #293956;
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .game-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .race-status {
+            color: #7f8ca4;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .race-status span {
+            color: #62a7ff;
+        }
+
+        .timer {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+        /* =========================
+           RACE TRACK
+        ========================= */
+
+        .track {
+            background: #0a1224;
+            border: 1px solid #263653;
+            border-radius: 14px;
+            padding: 25px 22px;
+            margin-bottom: 25px;
+        }
+
+        .track-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .track-label {
+            width: 65px;
+            color: #7d8ba4;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .track-line {
+            flex: 1;
+            height: 55px;
+            background: #121d35;
+            border: 1px solid #293c5d;
+            border-radius: 9px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 0%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(91, 76, 180, 0.25),
+                    rgba(139, 92, 246, 0.55)
+                );
+
+            transition: width 0.15s linear;
+        }
+
+        .car {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+
+            transform: translate(-50%, -50%);
+
+            width: 43px;
+            height: 26px;
+
+            background: #8b5cf6;
+
+            border-radius: 8px 11px 5px 5px;
+
+            box-shadow:
+                0 5px 18px rgba(139, 92, 246, 0.35);
+
+            transition: left 0.15s linear;
+        }
+
+        .car::before {
+            content: "";
+            position: absolute;
+
+            width: 22px;
+            height: 11px;
+
+            background: #b9a3ff;
+
+            border-radius: 7px 7px 2px 2px;
+
+            top: -8px;
+            left: 9px;
+        }
+
+        .wheel {
+            position: absolute;
+
+            width: 10px;
+            height: 10px;
+
+            background: #070d1c;
+            border: 2px solid #7785a0;
+
+            border-radius: 50%;
+
+            bottom: -5px;
+        }
+
+        .wheel-one {
+            left: 6px;
+        }
+
+        .wheel-two {
+            right: 6px;
+        }
+
+        .finish {
+            width: 65px;
+            color: #d8dff0;
+            font-size: 11px;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        /* =========================
+           COUNTDOWN
+        ========================= */
+
+        .countdown {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 900;
+            min-height: 52px;
+            margin-bottom: 18px;
+        }
+
+        /* =========================
+           TEXT
+        ========================= */
+
+        .text-box {
+            background: #0b1327;
+            border: 1px solid #293b5b;
+            border-radius: 11px;
+            padding: 22px;
+            margin-bottom: 18px;
+        }
+
+        .text-label {
+            color: #697892;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 13px;
+        }
+
+        #raceText {
+            color: #dce3f2;
+            font-size: 17px;
+            line-height: 1.9;
+            letter-spacing: 0.3px;
+            user-select: none;
+        }
+
+        .char-correct {
+            color: #59d98c;
+        }
+
+        .char-current {
+            color: #ffffff;
+            background: #8b5cf6;
+            border-radius: 3px;
+            padding: 2px 1px;
+        }
+
+        .char-wrong {
+            color: #ff6678;
+            background: rgba(255, 76, 99, 0.12);
+            border-radius: 3px;
+        }
+
+        .char-pending {
+            color: #687791;
+        }
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        #typingInput {
+            width: 100%;
+            height: 54px;
+
+            background: #0b1327;
+            border: 1px solid #354766;
+            border-radius: 9px;
+
+            color: #ffffff;
+
+            padding: 0 17px;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            outline: none;
+        }
+
+        #typingInput:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+        }
+
+        #typingInput:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        #typingInput::placeholder {
+            color: #596780;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+
+            padding: 12px 25px;
+
+            color: #ffffff;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .start-btn {
+            background: #8b5cf6;
+            box-shadow: 0 8px 22px rgba(139, 92, 246, 0.22);
+        }
+
+        .start-btn:hover {
+            background: #9a6cff;
+        }
+
+        .restart-btn {
+            display: none;
+            background: #263552;
+        }
+
+        .restart-btn:hover {
+            background: #334566;
+        }
+
+        .message {
+            text-align: center;
+            min-height: 20px;
+            margin-top: 14px;
+
+            color: #7e8ca5;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result {
+            display: none;
+            margin-top: 22px;
+            background: #131e35;
+            border: 1px solid #334665;
+            border-radius: 13px;
+            padding: 27px;
+            text-align: center;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result h2 {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .result p {
+            color: #8794aa;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .result-stat {
+            background: #0d162b;
+            border: 1px solid #263653;
+            border-radius: 9px;
+            padding: 14px;
+        }
+
+        .result-stat strong {
+            display: block;
+            font-size: 23px;
+            margin-bottom: 4px;
+        }
+
+        .result-stat span {
+            color: #718099;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                padding: 0 4%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .game-container {
+                padding: 20px;
+            }
+
+            .game-header h1 {
+                font-size: 30px;
+            }
+
+            .track {
+                padding: 18px 12px;
+            }
+
+            .track-label {
+                display: none;
+            }
+
+            .finish {
+                width: 40px;
+            }
+        }
+
+        @media (max-width: 560px) {
+
+            .nav-links a:not(.get-started) {
+                display: none;
+            }
+
+            .navbar {
+                height: 60px;
+            }
+
+            .game-page {
+                width: 94%;
+                margin-top: 25px;
+            }
+
+            .game-container {
+                padding: 15px;
+            }
+
+            .game-top {
+                margin-bottom: 18px;
+            }
+
+            #raceText {
+                font-size: 15px;
+            }
+
+            .result-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <a href="../../index.html" class="logo">
+            Type<span>Master</span>
+        </a>
+
+        <div class="nav-links">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../typing-test.html">
+                Typing Test
+            </a>
+
+            <a href="../practice.html">
+                Practice
+            </a>
+
+            <a href="../dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="../leaderboard.html">
+                Leaderboard
+            </a>
+
+            <a href="../login.html">
+                Login
+            </a>
+
+            <a href="../register.html" class="get-started">
+                Get Started
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         GAME PAGE
+    ========================= -->
+
+    <main class="game-page">
+
+        <a href="../../index.html" class="back-link">
+            ← Back to Games
+        </a>
+
+
+        <div class="game-header">
+
+            <div class="game-label">
+                GAME 03
+            </div>
+
+            <h1>
+                Typing Race
+            </h1>
+
+            <p>
+                Race against the clock by typing quickly and accurately to reach the finish line.
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             STATS
+        ========================= -->
+
+        <div class="stats">
+
+            <div class="stat-box">
+
+                <span class="stat-label">
+                    WPM
+                </span>
+
+                <span class="stat-value" id="wpm">
+                    0
+                </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <span class="stat-label">
+                    ACCURACY
+                </span>
+
+                <span class="stat-value" id="accuracy">
+                    100%
+                </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <span class="stat-label">
+                    TIME
+                </span>
+
+                <span class="stat-value" id="time">
+                    60
+                </span>
+
+            </div>
+
+
+            <div class="stat-box">
+
+                <span class="stat-label">
+                    PROGRESS
+                </span>
+
+                <span class="stat-value" id="progressText">
+                    0%
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             GAME
+        ========================= -->
+
+        <section class="game-container">
+
+            <div class="game-top">
+
+                <div class="race-status">
+                    Race:
+                    <span id="raceStatus">
+                        Ready
+                    </span>
+                </div>
+
+                <div class="timer">
+                    Time:
+                    <span id="timer">
+                        60
+                    </span>s
+                </div>
+
+            </div>
+
+
+            <!-- RACE TRACK -->
+
+            <div class="track">
+
+                <div class="track-row">
+
+                    <div class="track-label">
+                        YOU
+                    </div>
+
+                    <div class="track-line">
+
+                        <div
+                            class="progress"
+                            id="progressBar">
+                        </div>
+
+                        <div
+                            class="car"
+                            id="car">
+
+                            <div class="wheel wheel-one"></div>
+                            <div class="wheel wheel-two"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="finish">
+                        🏁
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- COUNTDOWN -->
+
+            <div
+                class="countdown"
+                id="countdown">
+            </div>
+
+
+            <!-- TEXT -->
+
+            <div class="text-box">
+
+                <div class="text-label">
+                    TYPE THE TEXT BELOW
+                </div>
+
+                <div id="raceText">
+                    Click Start Race to begin.
+                </div>
+
+            </div>
+
+
+            <!-- INPUT -->
+
+            <input
+                type="text"
+                id="typingInput"
+                placeholder="Start typing here..."
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+                disabled
+            >
+
+
+            <!-- BUTTONS -->
+
+            <div class="controls">
+
+                <button
+                    class="btn start-btn"
+                    id="startButton">
+                    Start Race
+                </button>
+
+                <button
+                    class="btn restart-btn"
+                    id="restartButton">
+                    Restart
+                </button>
+
+            </div>
+
+
+            <div
+                class="message"
+                id="message">
+                Get ready to race.
+            </div>
+
+
+            <!-- =========================
+                 RESULT
+            ========================= -->
+
+            <div
+                class="result"
+                id="result">
+
+                <h2>
+                    🏁 Race Finished!
+                </h2>
+
+                <p>
+                    Great job! Here are your race results.
+                </p>
+
+
+                <div class="result-stats">
+
+                    <div class="result-stat">
+
+                        <strong id="finalWpm">
+                            0
+                        </strong>
+
+                        <span>
+                            WPM
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-stat">
+
+                        <strong id="finalAccuracy">
+                            0%
+                        </strong>
+
+                        <span>
+                            ACCURACY
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-stat">
+
+                        <strong id="finalProgress">
+                            0%
+                        </strong>
+
+                        <span>
+                            PROGRESS
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn start-btn"
+                    id="playAgainButton">
+                    Race Again
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* ==========================================
+           RACE TEXT
+        ========================================== */
+
+        const raceTexts = [
+
+            "The quick brown fox jumps over the lazy dog.",
+
+            "Typing faster becomes easier when you practice every day.",
+
+            "Good accuracy is more important than typing with speed.",
+
+            "Learning to type correctly can save a lot of time.",
+
+            "Technology makes communication faster and more convenient.",
+
+            "A skilled typist can write ideas quickly without looking at the keyboard.",
+
+            "Practice regularly and your typing speed will improve naturally.",
+
+            "Focus on accuracy first and speed will follow with consistent practice."
+
+        ];
+
+
+        /* ==========================================
+           ELEMENTS
+        ========================================== */
+
+        const wpmElement =
+            document.getElementById("wpm");
+
+        const accuracyElement =
+            document.getElementById("accuracy");
+
+        const timeElement =
+            document.getElementById("time");
+
+        const progressTextElement =
+            document.getElementById("progressText");
+
+        const timerElement =
+            document.getElementById("timer");
+
+        const raceStatus =
+            document.getElementById("raceStatus");
+
+        const countdownElement =
+            document.getElementById("countdown");
+
+        const raceTextElement =
+            document.getElementById("raceText");
+
+        const typingInput =
+            document.getElementById("typingInput");
+
+        const startButton =
+            document.getElementById("startButton");
+
+        const restartButton =
+            document.getElementById("restartButton");
+
+        const playAgainButton =
+            document.getElementById("playAgainButton");
+
+        const progressBar =
+            document.getElementById("progressBar");
+
+        const car =
+            document.getElementById("car");
+
+        const messageElement =
+            document.getElementById("message");
+
+        const result =
+            document.getElementById("result");
+
+        const finalWpm =
+            document.getElementById("finalWpm");
+
+        const finalAccuracy =
+            document.getElementById("finalAccuracy");
+
+        const finalProgress =
+            document.getElementById("finalProgress");
+
+
+        /* ==========================================
+           VARIABLES
+        ========================================== */
+
+        let currentText = "";
+
+        let gameStarted = false;
+
+        let gameFinished = false;
+
+        let timeLeft = 60;
+
+        let timerInterval = null;
+
+        let startTime = null;
+
+        let totalTyped = 0;
+
+        let correctTyped = 0;
+
+
+        /* ==========================================
+           RANDOM TEXT
+        ========================================== */
+
+        function getRandomText() {
+
+            const index =
+                Math.floor(
+                    Math.random() *
+                    raceTexts.length
+                );
+
+            return raceTexts[index];
+        }
+
+
+        /* ==========================================
+           DISPLAY TEXT
+        ========================================== */
+
+        function renderText() {
+
+            raceTextElement.innerHTML = "";
+
+            for (
+                let i = 0;
+                i < currentText.length;
+                i++
+            ) {
+
+                const span =
+                    document.createElement("span");
+
+                span.textContent =
+                    currentText[i];
+
+                span.classList.add(
+                    "char-pending"
+                );
+
+                raceTextElement.appendChild(
+                    span
+                );
+            }
+        }
+
+
+        /* ==========================================
+           START RACE
+        ========================================== */
+
+        function startRace() {
+
+            clearInterval(timerInterval);
+
+            resetGameData();
+
+            countdownElement.textContent =
+                "";
+
+            gameStarted = false;
+
+            gameFinished = false;
+
+            result.classList.remove("show");
+
+            startButton.style.display =
+                "none";
+
+            restartButton.style.display =
+                "inline-block";
+
+            typingInput.disabled =
+                true;
+
+            raceStatus.textContent =
+                "Starting...";
+
+            messageElement.textContent =
+                "Get ready!";
+
+            let count = 3;
+
+            countdownElement.textContent =
+                count;
+
+            const countdownTimer =
+                setInterval(function () {
+
+                    count--;
+
+                    if (count > 0) {
+
+                        countdownElement.textContent =
+                            count;
+
+                    }
+
+                    else {
+
+                        clearInterval(
+                            countdownTimer
+                        );
+
+                        countdownElement.textContent =
+                            "GO!";
+
+                        setTimeout(function () {
+
+                            countdownElement.textContent =
+                                "";
+
+                            beginTyping();
+
+                        }, 600);
+
+                    }
+
+                }, 1000);
+        }
+
+
+        /* ==========================================
+           BEGIN TYPING
+        ========================================== */
+
+        function beginTyping() {
+
+            gameStarted = true;
+
+            raceStatus.textContent =
+                "Racing";
+
+            messageElement.textContent =
+                "Type the text as quickly and accurately as possible.";
+
+            typingInput.disabled =
+                false;
+
+            typingInput.value =
+                "";
+
+            typingInput.focus();
+
+            startTime =
+                Date.now();
+
+            startTimer();
+        }
+
+
+        /* ==========================================
+           START TIMER
+        ========================================== */
+
+        function startTimer() {
+
+            timerInterval =
+                setInterval(function () {
+
+                    if (!gameStarted) {
+                        return;
+                    }
+
+                    timeLeft--;
+
+                    updateTimer();
+
+                    updateStats();
+
+                    if (
+                        timeLeft <= 0
+                    ) {
+
+                        finishRace();
+
+                    }
+
+                }, 1000);
+        }
+
+
+        /* ==========================================
+           UPDATE TIMER
+        ========================================== */
+
+        function updateTimer() {
+
+            timeElement.textContent =
+                timeLeft;
+
+            timerElement.textContent =
+                timeLeft;
+        }
+
+
+        /* ==========================================
+           INPUT
+        ========================================== */
+
+        typingInput.addEventListener(
+            "input",
+            function () {
+
+                if (
+                    !gameStarted ||
+                    gameFinished
+                ) {
+                    return;
+                }
+
+                const typed =
+                    typingInput.value;
+
+                totalTyped =
+                    typed.length;
+
+                correctTyped =
+                    0;
+
+                let firstWrong =
+                    false;
+
+                const characters =
+                    raceTextElement.children;
+
+                for (
+                    let i = 0;
+                    i < currentText.length;
+                    i++
+                ) {
+
+                    const character =
+                        characters[i];
+
+                    character.className = "";
+
+                    if (
+                        i < typed.length
+                    ) {
+
+                        if (
+                            typed[i] ===
+                            currentText[i]
+                            &&
+                            !firstWrong
+                        ) {
+
+                            character.classList.add(
+                                "char-correct"
+                            );
+
+                            correctTyped++;
+
+                        }
+
+                        else {
+
+                            character.classList.add(
+                                "char-wrong"
+                            );
+
+                            firstWrong =
+                                true;
+                        }
+
+                    }
+
+                    else {
+
+                        if (
+                            i ===
+                            typed.length
+                        ) {
+
+                            character.classList.add(
+                                "char-current"
+                            );
+
+                        }
+
+                        else {
+
+                            character.classList.add(
+                                "char-pending"
+                            );
+                        }
+                    }
+                }
+
+
+                updateStats();
+
+
+                /* =========================
+                   FINISH WHEN TEXT COMPLETE
+                ========================= */
+
+                if (
+                    typed ===
+                    currentText
+                ) {
+
+                    finishRace();
+
+                }
+
+            }
+        );
+
+
+        /* ==========================================
+           UPDATE STATS
+        ========================================== */
+
+        function updateStats() {
+
+            let elapsedSeconds =
+                (Date.now() -
+                    startTime) /
+                1000;
+
+            if (
+                elapsedSeconds < 1
+            ) {
+                elapsedSeconds = 1;
+            }
+
+
+            const minutes =
+                elapsedSeconds / 60;
+
+
+            const wpm =
+                Math.round(
+                    (
+                        correctTyped /
+                        5
+                    ) /
+                    minutes
+                );
+
+
+            let accuracy = 100;
+
+            if (
+                totalTyped > 0
+            ) {
+
+                accuracy =
+                    Math.round(
+                        (
+                            correctTyped /
+                            totalTyped
+                        ) * 100
+                    );
+            }
+
+
+            const progress =
+                Math.min(
+                    100,
+                    Math.round(
+                        (
+                            correctTyped /
+                            currentText.length
+                        ) * 100
+                    )
+                );
+
+
+            wpmElement.textContent =
+                Math.max(
+                    0,
+                    wpm
+                );
+
+            accuracyElement.textContent =
+                accuracy + "%";
+
+            progressTextElement.textContent =
+                progress + "%";
+
+            progressBar.style.width =
+                progress + "%";
+
+            car.style.left =
+                progress + "%";
+        }
+
+
+        /* ==========================================
+           FINISH RACE
+        ========================================== */
+
+        function finishRace() {
+
+            if (
+                gameFinished
+            ) {
+                return;
+            }
+
+            gameFinished = true;
+
+            gameStarted = false;
+
+            clearInterval(
+                timerInterval
+            );
+
+            typingInput.disabled =
+                true;
+
+            raceStatus.textContent =
+                "Finished";
+
+            const finalProgressValue =
+                Math.min(
+                    100,
+                    Math.round(
+                        (
+                            correctTyped /
+                            currentText.length
+                        ) * 100
+                    )
+                );
+
+
+            updateStats();
+
+
+            finalWpm.textContent =
+                wpmElement.textContent;
+
+            finalAccuracy.textContent =
+                accuracyElement.textContent;
+
+            finalProgress.textContent =
+                finalProgressValue +
+                "%";
+
+
+            if (
+                finalProgressValue >=
+                100
+            ) {
+
+                messageElement.textContent =
+                    "🏆 You crossed the finish line!";
+
+            }
+
+            else {
+
+                messageElement.textContent =
+                    "Time is up! Try again and improve your progress.";
+
+            }
+
+
+            result.classList.add(
+                "show"
+            );
+        }
+
+
+        /* ==========================================
+           RESET
+        ========================================== */
+
+        function resetGameData() {
+
+            gameStarted = false;
+
+            gameFinished = false;
+
+            timeLeft = 60;
+
+            totalTyped = 0;
+
+            correctTyped = 0;
+
+            startTime = null;
+
+            currentText =
+                getRandomText();
+
+            renderText();
+
+            typingInput.value =
+                "";
+
+            typingInput.disabled =
+                true;
+
+            wpmElement.textContent =
+                "0";
+
+            accuracyElement.textContent =
+                "100%";
+
+            timeElement.textContent =
+                "60";
+
+            timerElement.textContent =
+                "60";
+
+            progressTextElement.textContent =
+                "0%";
+
+            progressBar.style.width =
+                "0%";
+
+            car.style.left =
+                "0%";
+
+            raceStatus.textContent =
+                "Ready";
+        }
+
+
+        /* ==========================================
+           BUTTONS
+        ========================================== */
+
+        startButton.addEventListener(
+            "click",
+            startRace
+        );
+
+        restartButton.addEventListener(
+            "click",
+            startRace
+        );
+
+        playAgainButton.addEventListener(
+            "click",
+            startRace
+        );
+
+
+        /* ==========================================
+           INITIAL STATE
+        ========================================== */
+
+        resetGameData();
+
+    </script>
+
+</body>
+</html>

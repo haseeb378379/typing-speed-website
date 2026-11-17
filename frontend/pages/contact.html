@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Contact TypeMaster for questions, technical support, suggestions and feedback. We are here to help you improve your typing experience.">
+
+    <title>Contact Us | TypeMaster</title>
+
+    <!-- Website Styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+
+            <a href="../index.html" class="logo">
+                Type<span>Master</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="practice.html">Typing Test</a></li>
+                <li><a href="lessons.html">Practice</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="login.html" class="login-btn">Login</a>
+                <a href="register.html" class="signup-btn">Get Started</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <main class="contact-page">
+
+        <!-- 01. Contact Hero -->
+        <section class="contact-hero">
+
+            <div class="contact-hero-content">
+
+                <span class="contact-label">WE ARE HERE TO HELP</span>
+
+                <h1>
+                    Get in <span>Touch</span>
+                </h1>
+
+                <p>
+                    Have a question, suggestion or need assistance?
+                    We would love to hear from you. Send us a message
+                    and let us know how we can help.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 02. Contact Information -->
+        <section class="contact-info-section">
+
+            <div class="contact-section-heading">
+
+                <span>CONTACT INFORMATION</span>
+
+                <h2>How Can We Help You?</h2>
+
+                <p>
+                    Choose the right topic and share your thoughts
+                    with the TypeMaster team.
+                </p>
+
+            </div>
+
+
+            <div class="contact-info-grid">
+
+                <article class="contact-info-card">
+
+                    <div class="contact-icon">💬</div>
+
+                    <h3>General Inquiries</h3>
+
+                    <p>
+                        Have questions about TypeMaster?
+                        Let us know what you would like to know.
+                    </p>
+
+                </article>
+
+
+                <article class="contact-info-card">
+
+                    <div class="contact-icon">🛠️</div>
+
+                    <h3>Technical Support</h3>
+
+                    <p>
+                        Facing a problem while using our platform?
+                        Tell us about the issue.
+                    </p>
+
+                </article>
+
+
+                <article class="contact-info-card">
+
+                    <div class="contact-icon">💡</div>
+
+                    <h3>Suggestions & Feedback</h3>
+
+                    <p>
+                        Have an idea to improve TypeMaster?
+                        Your suggestions are valuable.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- 03. Contact Form -->
+        <section class="contact-form-section">
+
+            <div class="contact-form-wrapper">
+
+                <div class="contact-form-intro">
+
+                    <span>SEND US A MESSAGE</span>
+
+                    <h2>Let's Start a Conversation</h2>
+
+                    <p>
+                        Fill out the form below with your details
+                        and message. Please provide accurate
+                        information so your inquiry can be handled
+                        appropriately.
+                    </p>
+
+                    <div class="contact-note">
+                        <span>✦</span>
+                        <p>
+                            We appreciate every question,
+                            suggestion and feedback from our users.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form class="contact-form" id="contactForm">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="contactName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="contactName"
+                                name="name"
+                                placeholder="Enter your full name"
+                                required
+                                minlength="2"
+                                maxlength="80"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="contactEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="contactEmail"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                                maxlength="254"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="contactSubject">
+                            Subject
+                        </label>
+
+                        <select
+                            id="contactSubject"
+                            name="subject"
+                            required
+                        >
+
+                            <option value="" disabled selected>
+                                Select a subject
+                            </option>
+
+                            <option value="General Inquiry">
+                                General Inquiry
+                            </option>
+
+                            <option value="Technical Support">
+                                Technical Support
+                            </option>
+
+                            <option value="Feedback">
+                                Feedback & Suggestions
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="contactMessage">
+                            Your Message
+                        </label>
+
+                        <textarea
+                            id="contactMessage"
+                            name="message"
+                            rows="6"
+                            placeholder="Write your message here..."
+                            required
+                            minlength="10"
+                            maxlength="2000"
+                        ></textarea>
+
+                        <small class="character-hint">
+                            Maximum 2000 characters.
+                        </small>
+
+                    </div>
+
+
+                    <button type="submit" class="contact-submit-btn">
+                        Send Message →
+                    </button>
+
+                    <p
+                        class="contact-form-status"
+                        id="contactFormStatus"
+                        aria-live="polite"
+                    ></p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- 04. FAQ -->
+        <section class="contact-faq-section">
+
+            <div class="contact-section-heading">
+
+                <span>FREQUENTLY ASKED QUESTIONS</span>
+
+                <h2>Got Questions?</h2>
+
+                <p>
+                    Here are some common questions about TypeMaster.
+                </p>
+
+            </div>
+
+
+            <div class="contact-faq-list">
+
+                <details class="contact-faq-item">
+
+                    <summary>
+                        What is TypeMaster?
+                    </summary>
+
+                    <p>
+                        TypeMaster is an online platform designed
+                        to help users improve their typing speed,
+                        accuracy and keyboard skills.
+                    </p>
+
+                </details>
+
+
+                <details class="contact-faq-item">
+
+                    <summary>
+                        Is TypeMaster free to use?
+                    </summary>
+
+                    <p>
+                        TypeMaster provides free typing practice
+                        features so users can work on improving
+                        their typing skills.
+                    </p>
+
+                </details>
+
+
+                <details class="contact-faq-item">
+
+                    <summary>
+                        How can I improve my typing speed?
+                    </summary>
+
+                    <p>
+                        Practice regularly, focus on accuracy,
+                        maintain proper finger placement and
+                        gradually increase your typing speed.
+                    </p>
+
+                </details>
+
+
+                <details class="contact-faq-item">
+
+                    <summary>
+                        Can beginners use TypeMaster?
+                    </summary>
+
+                    <p>
+                        Yes. TypeMaster is designed for beginners
+                        as well as users who want to improve
+                        their existing typing skills.
+                    </p>
+
+                </details>
+
+
+                <details class="contact-faq-item">
+
+                    <summary>
+                        How can I report a technical problem?
+                    </summary>
+
+                    <p>
+                        Use the contact form above and select
+                        Technical Support to describe the issue.
+                    </p>
+
+                </details>
+
+            </div>
+
+        </section>
+
+
+        <!-- 05. Final CTA -->
+        <section class="contact-cta">
+
+            <span>KEEP LEARNING</span>
+
+            <h2>
+                Every Great Typist Starts Somewhere.
+            </h2>
+
+            <p>
+                Continue practicing, track your progress
+                and become a more confident typist.
+            </p>
+
+            <a href="practice.html" class="primary-btn">
+                Start Typing Test →
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div>
+
+                <a href="../index.html" class="logo">
+                    Type<span>Master</span>
+                </a>
+
+                <p>Practice smarter. Type faster. Achieve more.</p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="settings.html">Settings</a>
+
+            </div>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 TypeMaster. All rights reserved.
+        </p>
+
+    </footer>
+<!-- Contact Form Success Popup -->
+<div class="contact-success-overlay" id="contactSuccessPopup" hidden>
+
+    <div class="contact-success-box">
+
+        <div class="success-icon">
+            <svg viewBox="0 0 52 52">
+                <circle class="success-circle" cx="26" cy="26" r="24" fill="none"/>
+                <path class="success-check" fill="none"
+                    d="M14 27 L22 35 L39 17"/>
+            </svg>
+        </div>
+
+        <h2>Thank You!</h2>
+
+        <h3>Message Sent Successfully</h3>
+
+        <p>
+            Thank you for contacting TypeMaster.
+            We appreciate your message and will get back to you soon.
+        </p>
+
+        <button type="button" id="closeSuccessPopup">
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+
+
+    <script src="../js/app.js"></script>
+
+</body>
+</html>
