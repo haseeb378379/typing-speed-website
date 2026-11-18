@@ -547,12 +547,28 @@ button {
 @media (max-width: 760px) {
     .navbar {
         min-height: 68px;
-        gap: 16px;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .nav-links {
-        display: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 16px;
+        width: 100%;
+        order: 3;
     }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .nav-actions {
+        gap: 14px;
+    }
+
 
     .nav-actions {
         gap: 14px;
